@@ -1,0 +1,136 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@android:color/transparent"
+    android:padding="@dimen/widget_margin">
+
+
+    <TextView
+        android:id="@+id/titleWidget"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="20dp"
+        android:textSize="20sp"
+        android:fontFamily="sans-serif-thin"
+        android:textStyle="bold"
+        android:text="@string/title_widget_1"
+        android:textColor="#ffffff"/>
+
+    <TextView
+        android:id="@+id/titleWidget_next"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@+id/titleWidget"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="20dp"
+        android:drawableStart="@drawable/coronavirus"
+        android:drawablePadding="0dp"
+        android:textSize="20sp"
+        android:fontFamily="sans-serif-thin"
+        android:textStyle="bold"
+        android:text="@string/title_widget_2"
+        android:textColor="#ffffff"/>
+
+
+    <ImageView
+        android:id="@+id/imageViewGood_wg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="15dp"
+        android:layout_below="@+id/titleWidget"
+        android:src="@drawable/ic_good" />
+
+    <ImageView
+        android:id="@+id/imageViewBad_wg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_below="@+id/imageViewGood_wg"
+        android:layout_marginTop="10dp"
+        android:src="@drawable/ic_bad_wg" />
+
+    <ImageView
+        android:id="@+id/imageViewDeath_wg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_below="@+id/imageViewBad_wg"
+        android:layout_marginTop="10dp"
+        android:src="@drawable/ic_death_wg" />
+
+
+    <TextView
+        android:id="@+id/appwidget_text_recovered"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/titleWidget"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="13dp"
+        android:layout_toEndOf="@+id/imageViewGood_wg"
+        android:background="@android:color/transparent"
+        android:contentDescription="@string/appwidget_text_re"
+        android:fontFamily="sans-serif-thin"
+        android:textColor="#ffffff"
+        android:textSize="20sp"
+        android:textStyle="normal" />
+
+    <TextView
+        android:id="@+id/appwidget_text_cases"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="7dp"
+        android:layout_below="@+id/appwidget_text_recovered"
+        android:layout_toEndOf="@+id/imageViewBad_wg"
+        android:layout_marginStart="10dp"
+        android:background="@android:color/transparent"
+        android:textColor="#ffffff"
+        android:fontFamily="sans-serif-thin"
+        android:textSize="20sp"
+        android:textStyle="normal" />
+
+    <TextView
+        android:id="@+id/appwidget_text_NewCases"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:layout_below="@+id/appwidget_text_recovered"
+        android:layout_toEndOf="@+id/appwidget_text_cases"
+        android:layout_marginStart="10dp"
+        android:background="@android:color/transparent"
+        android:textColor="#ffffff"
+        android:fontFamily="sans-serif-thin"
+        android:textSize="12sp"
+        android:textStyle="normal"/>
+
+    <TextView
+        android:id="@+id/appwidget_text_deaths"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/appwidget_text_cases"
+        android:layout_marginTop="8dp"
+        android:layout_toEndOf="@+id/imageViewDeath_wg"
+        android:layout_marginStart="10dp"
+        android:background="@android:color/transparent"
+        android:textColor="#ffffff"
+        android:fontFamily="sans-serif-thin"
+        android:textSize="20sp"
+        android:textStyle="normal" />
+
+    <TextView
+        android:id="@+id/appwidget_text_NewDeaths"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/appwidget_text_cases"
+        android:layout_marginTop="16dp"
+        android:layout_toEndOf="@+id/appwidget_text_cases"
+        android:layout_marginStart="10dp"
+        android:background="@android:color/transparent"
+        android:textColor="#ffffff"
+        android:fontFamily="sans-serif-thin"
+        android:textSize="12sp"
+        android:textStyle="normal" />
+
+</RelativeLayout>

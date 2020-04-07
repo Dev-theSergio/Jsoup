@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">COVID-19 Monitor</string>
+    <string name="title">Coronavirus live update</string>
+    <string name="title_widget_1">C</string>
+    <string name="title_widget_2">VID-19</string>
+
+    <string name="world">World</string>
+    <string name="russia">Russia</string>
+    <string name="appwidget_text_cases">loading…</string>
+    <string name="appwidget_text_re">loading…</string>
+    <string name="appwidget_text_death">loading…</string>
+    <string name="add_widget">Add widget</string>
+</resources>

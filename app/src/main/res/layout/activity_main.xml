@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.jsoup.MainActivity">
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="30sp"
+        android:fontFamily="sans-serif-black"
+        android:text="@string/title"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"/>
+
+    <TextView
+        android:id="@+id/tvWorld"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:text="@string/world"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/title"
+        android:layout_marginTop="25dp"/>
+
+    <TextView
+        android:id="@+id/tvRecovered"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:layout_below="@+id/tvWorld"
+        android:layout_toEndOf="@+id/imageViewGood"
+        android:layout_marginStart="10dp"
+        android:text="@string/appwidget_text_cases"
+        android:textSize="20sp"
+        android:fontFamily="sans-serif-medium"
+        android:textColor="@android:color/holo_green_light"/>
+
+    <TextView
+        android:id="@+id/tvCases"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="7dp"
+        android:layout_below="@+id/tvRecovered"
+        android:layout_toEndOf="@+id/imageViewBad"
+        android:layout_marginStart="10dp"
+        android:text="@string/appwidget_text_cases"
+        android:textSize="20sp"
+        android:fontFamily="sans-serif-medium"
+        android:textColor="@android:color/holo_red_light"/>
+
+    <TextView
+        android:id="@+id/tvNewCases"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="7dp"
+        android:layout_below="@+id/tvRecovered"
+        android:layout_toEndOf="@+id/tvCases"
+        android:layout_marginStart="10dp"
+        android:textSize="20sp"
+        android:fontFamily="sans-serif-medium"
+        android:textColor="@android:color/holo_red_light"/>
+
+    <TextView
+        android:id="@+id/tvDeaths"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_below="@+id/tvCases"
+        android:layout_toEndOf="@+id/imageViewDeath"
+        android:layout_marginStart="10dp"
+        android:text="@string/appwidget_text_cases"
+        android:textSize="20sp"
+        android:fontFamily="sans-serif-medium"
+        android:textColor="@android:color/black"/>
+
+    <TextView
+        android:id="@+id/tvNewDeaths"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvCases"
+        android:layout_marginTop="8dp"
+        android:layout_toEndOf="@+id/tvCases"
+        android:layout_marginStart="10dp"
+        android:fontFamily="sans-serif-medium"
+        android:textColor="@android:color/black"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/tvRussia"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:text="@string/russia"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/tvDeaths"
+        android:layout_marginTop="35dp"/>
+
+    <TextView
+        android:id="@+id/tvRecoveredRus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:layout_below="@+id/tvRussia"
+        android:layout_toEndOf="@+id/imageViewGoodRus"
+        android:layout_marginStart="10dp"
+        android:text="@string/appwidget_text_cases"
+        android:textSize="20sp"
+        android:fontFamily="sans-serif-medium"
+        android:textColor="@android:color/holo_green_light"/>
+
+    <TextView
+        android:id="@+id/tvCasesRus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_below="@+id/tvRecoveredRus"
+        android:layout_toEndOf="@+id/imageViewDeathRus"
+        android:layout_marginStart="10dp"
+        android:text="@string/appwidget_text_cases"
+        android:textSize="20sp"
+        android:fontFamily="sans-serif-medium"
+        android:textColor="@android:color/holo_red_light"/>
+
+    <TextView
+        android:id="@+id/tvNewCasesRus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="7dp"
+        android:layout_below="@+id/tvRecoveredRus"
+        android:layout_toEndOf="@+id/tvCasesRus"
+        android:layout_marginStart="10dp"
+        android:textSize="20sp"
+        android:fontFamily="sans-serif-medium"
+        android:textColor="@android:color/holo_red_light"/>
+
+    <TextView
+        android:id="@+id/tvDeathsRus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_below="@+id/tvCasesRus"
+        android:layout_toEndOf="@+id/imageViewDeathRus"
+        android:layout_marginStart="10dp"
+        android:text="@string/appwidget_text_cases"
+        android:textSize="20sp"
+        android:fontFamily="sans-serif-medium"
+        android:textColor="@android:color/black"/>
+
+    <TextView
+        android:id="@+id/tvNewDeathsRus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvCasesRus"
+        android:layout_marginTop="8dp"
+        android:layout_toEndOf="@+id/tvCasesRus"
+        android:layout_marginStart="10dp"
+        android:fontFamily="sans-serif-medium"
+        android:textColor="@android:color/black"
+        android:textSize="20sp" />
+
+    <ImageView
+        android:id="@+id/imageViewGood"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="110dp"
+        android:layout_marginTop="15dp"
+        android:layout_below="@+id/tvWorld"
+        app:srcCompat="@drawable/ic_good" />
+
+    <ImageView
+        android:id="@+id/imageViewBad"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="110dp"
+        android:layout_below="@+id/imageViewGood"
+        android:layout_marginTop="10dp"
+        app:srcCompat="@drawable/ic_bad" />
+
+    <ImageView
+        android:id="@+id/imageViewDeath"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="110dp"
+        android:layout_below="@+id/imageViewBad"
+        android:layout_marginTop="10dp"
+        app:srcCompat="@drawable/ic_death" />
+
+    <ImageView
+        android:id="@+id/imageViewGoodRus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="110dp"
+        android:layout_below="@+id/tvRussia"
+        android:layout_marginTop="15dp"
+        app:srcCompat="@drawable/ic_good" />
+    <ImageView
+        android:id="@+id/imageViewBadRus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="110dp"
+        android:layout_below="@+id/imageViewGoodRus"
+        android:layout_marginTop="10dp"
+        app:srcCompat="@drawable/ic_bad" />
+
+    <ImageView
+        android:id="@+id/imageViewDeathRus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="110dp"
+        android:layout_below="@+id/imageViewBadRus"
+        android:layout_marginTop="10dp"
+        app:srcCompat="@drawable/ic_death" />
+
+
+</RelativeLayout>
