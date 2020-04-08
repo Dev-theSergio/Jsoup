@@ -66,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
                         });
                     }
                 }catch (InterruptedException e){
-
+                    Log.e("Thread", "error");
                 }
 
 
@@ -148,13 +148,33 @@ public class MainActivity extends AppCompatActivity {
                 String ru = subtitlePlus.substring(subtitlePlus.indexOf("Russia ", 0));
                 Log.w("World_ru", ru);*/
 
-                String[] separatedAll = subtitlePlus.substring(subtitlePlus.indexOf("World ", 0)).split(" ");
-                text21.setText(separatedAll[2].replace(",", " "));
-                text31.setText(separatedAll[4].replace(",", " "));
+                String[] separatedAll = subtitlePlus.substring(subtitlePlus.indexOf("World ",0)).split(" ");
+                if(separatedAll[2].substring(0,1).equals("+")){
+                    text21.setText(separatedAll[2].replace(",", " "));
+                }else{
+                    text21.setText("");
+                }
+                if(separatedAll[4].substring(0,1).equals("+")){
+                    text31.setText(separatedAll[4].replace(",", " "));
+                }else{
+                    text31.setText("");
+                }
+                /*text21.setText(separatedAll[2].replace(",", " "));
+                text31.setText(separatedAll[4].replace(",", " "));*/
 
-                String[] separatedRu = subtitlePlus.substring(subtitlePlus.indexOf("Russia ", 0)).split(" ");
-                text51.setText(separatedRu[2].replace(",", " "));
-                text61.setText(separatedRu[4].replace(",", " "));
+                String[] separatedRu = subtitlePlus.substring(subtitlePlus.indexOf("Russia ",0)).split(" ");
+                if(separatedRu[2].substring(0,1).equals("+")){
+                    text51.setText(separatedRu[2].replace(",", " "));
+                }else{
+                    text51.setText("");
+                }
+                if(separatedRu[4].substring(0,1).equals("+")){
+                    text61.setText(separatedRu[4].replace(",", " "));
+                }else{
+                    text61.setText("");
+                }
+                /*Log.w("Check",separatedRu[2].substring(0,1));
+                Log.w("Check",separatedAll[2].substring(0,1));*/
 
             }
 

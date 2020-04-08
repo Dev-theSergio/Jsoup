@@ -89,10 +89,17 @@ public class AppWidget extends AppWidgetProvider {
             wCases = (separated[0].replace(",", " "));
             wDeaths = (separated[1].replace(",", " "));
 
-            String[] separatedAll = subtitlePlus.substring(subtitlePlus.indexOf("World ", 0)).split(" ");
-            wNewCases = (separatedAll[2].replace(",", " "));
-            wNewDeaths = (separatedAll[4].replace(",", " "));
-
+            String[] separatedAll = subtitlePlus.substring(subtitlePlus.indexOf("World ",0)).split(" ");
+            if(separatedAll[2].substring(0,1).equals("+")){
+                wNewCases = (separatedAll[2].replace(",", " "));
+            }else{
+                wNewCases = ("");
+            }
+            if(separatedAll[4].substring(0,1).equals("+")){
+                wNewDeaths = (separatedAll[4].replace(",", " "));
+            }else{
+                wNewDeaths = ("");
+            }
 
 
             views.setTextViewText(R.id.appwidget_text_recovered, wRecovered);
