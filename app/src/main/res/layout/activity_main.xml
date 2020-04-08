@@ -24,7 +24,7 @@
         android:text="@string/world"
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/title"
-        android:layout_marginTop="25dp"/>
+        android:layout_marginTop="50dp"/>
 
     <TextView
         android:id="@+id/tvRecovered"
@@ -90,7 +90,7 @@
         android:textSize="20sp" />
 
     <TextView
-        android:id="@+id/tvRussia"
+        android:id="@+id/tvCountry"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="20sp"
@@ -104,7 +104,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
-        android:layout_below="@+id/tvRussia"
+        android:layout_below="@+id/tvCountry"
         android:layout_toEndOf="@+id/imageViewGoodRus"
         android:layout_marginStart="10dp"
         android:text="@string/appwidget_text_cases"
@@ -194,7 +194,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="110dp"
-        android:layout_below="@+id/tvRussia"
+        android:layout_below="@+id/tvCountry"
         android:layout_marginTop="15dp"
         app:srcCompat="@drawable/ic_good" />
     <ImageView

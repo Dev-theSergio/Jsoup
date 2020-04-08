@@ -7,7 +7,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.widget.RemoteViews;
-import android.widget.Toast;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -56,7 +55,7 @@ public class AppWidget extends AppWidgetProvider {
         protected Void doInBackground(Void... params) {
 
             Document doc = null;            //Здесь хранится будет разобранный html документ
-            Document docRus = null;            //Здесь хранится будет разобранный html документ
+            //Document docRus = null;            //Здесь хранится будет разобранный html документ
 
             Elements masthead = null;
             Elements mastheadPlus = null;
@@ -89,7 +88,7 @@ public class AppWidget extends AppWidgetProvider {
             wCases = (separated[0].replace(",", " "));
             wDeaths = (separated[1].replace(",", " "));
 
-            String[] separatedAll = subtitlePlus.substring(subtitlePlus.indexOf("World ",0)).split(" ");
+            String[] separatedAll = subtitlePlus.substring(subtitlePlus.indexOf("World ")).split(" ");
             if(separatedAll[2].substring(0,1).equals("+")){
                 wNewCases = (separatedAll[2].replace(",", " "));
             }else{
@@ -148,7 +147,7 @@ public class AppWidget extends AppWidgetProvider {
     @Override
     public void onReceive(Context context, Intent intent)
     {
-        RemoteViews views;
+        //RemoteViews views;
         AppWidgetManager WidgetManager = AppWidgetManager.getInstance(context);
         ComponentName componentName = new ComponentName(context.getPackageName(),getClass().getName());
         int[] WidgetID = WidgetManager.getAppWidgetIds(componentName);
@@ -160,10 +159,13 @@ public class AppWidget extends AppWidgetProvider {
         {
             AppWidgetAlarm appWidgetAlarm = new AppWidgetAlarm(context.getApplicationContext());
             appWidgetAlarm.startAlarm();
-            Toast.makeText(context, "Upd", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(context, "Upd", Toast.LENGTH_SHORT).show();
             for (int appWidgetId : WidgetID) {
                 updateAppWidget(context, WidgetManager, appWidgetId);
             }
+
+               //updateAppWidget(context, WidgetManager, WidgetID[0]);
+
         }
 
     }
