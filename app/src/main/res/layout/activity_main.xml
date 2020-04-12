@@ -26,6 +26,7 @@
         android:layout_below="@+id/title"
         android:layout_marginTop="50dp"/>
 
+
     <TextView
         android:id="@+id/tvRecovered"
         android:layout_width="wrap_content"
@@ -89,7 +90,7 @@
         android:textColor="@android:color/black"
         android:textSize="20sp" />
 
-    <TextView
+    <!--TextView
         android:id="@+id/tvCountry"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -97,14 +98,25 @@
         android:text="@string/russia"
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/tvDeaths"
-        android:layout_marginTop="35dp"/>
+        android:layout_marginTop="35dp"/-->
+
+    <Spinner
+        android:id="@+id/spCountry"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvDeaths"
+        android:layout_marginTop="35dp"
+        android:layout_centerHorizontal="true"
+        android:textSize="20sp"
+        android:paddingHorizontal="5dp"
+        android:textAlignment="center" />
 
     <TextView
         android:id="@+id/tvRecoveredRus"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
-        android:layout_below="@+id/tvCountry"
+        android:layout_below="@+id/spCountry"
         android:layout_toEndOf="@+id/imageViewGoodRus"
         android:layout_marginStart="10dp"
         android:text="@string/appwidget_text_cases"
@@ -194,7 +206,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="110dp"
-        android:layout_below="@+id/tvCountry"
+        android:layout_below="@+id/spCountry"
         android:layout_marginTop="15dp"
         app:srcCompat="@drawable/ic_good" />
     <ImageView
@@ -214,6 +226,28 @@
         android:layout_below="@+id/imageViewBadRus"
         android:layout_marginTop="10dp"
         app:srcCompat="@drawable/ic_death" />
+
+    <ImageView
+        android:id="@+id/imageLogo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="30dp"
+        app:srcCompat="@drawable/worldometers_logo_footer" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/imageLogo"
+        android:layout_marginEnd="-88dp"
+        android:layout_marginBottom="0dp"
+        android:layout_toStartOf="@+id/imageLogo"
+        android:text="@string/powered_by"
+
+
+        android:textColor="@android:color/darker_gray"
+        android:textSize="16dp" />
 
 
 </RelativeLayout>
