@@ -108,8 +108,8 @@ public class MainActivity extends AppCompatActivity {
             //////////////////     Spinner country adapter and listener     ////////////////////////
 
             ArrayAdapter<CharSequence> spinnerArrayAdapter = ArrayAdapter.createFromResource(this,
-                    R.array.string_array_country, android.R.layout.simple_spinner_item); //selected item will look like a spinner set from XML
-            spinnerArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                    R.array.string_array_country, R.layout.custom_spinner_item); //selected item will look like a spinner set from XML
+            spinnerArrayAdapter.setDropDownViewResource(R.layout.custom_drop_down_item); // android.R.layout.simple_spinner_dropdown_item
             spCountry.setAdapter(spinnerArrayAdapter);
             loadPosition();
 
@@ -128,56 +128,6 @@ public class MainActivity extends AppCompatActivity {
             });
 
             ////////////////////////////////////////////////////////////////////////////////////////
-
-
-
-
-            /*titleCountry.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    AlertDialog.Builder alertDialogSend = new AlertDialog.Builder(MainActivity.this, R.style.Theme_AppCompat_Light_Dialog_Alert);
-                    LayoutInflater inflater = getLayoutInflater();
-                    @SuppressLint("InflateParams") View view = inflater.inflate(R.layout.counrty_dialog, null);
-
-                    final EditText editText = view.findViewById(R.id.etCountryName);
-
-                    alertDialogSend.setView(view);
-                    alertDialogSend.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            try {
-                                if (!editText.getText().toString().replace(" ", "").equals("")) {
-                                    String etCountry = Objects.requireNonNull(editText.getText()).toString();
-                                    titleCountry.setText(etCountry);
-                                }
-                            } catch (Exception e) {
-                                e.printStackTrace();
-                            }
-                            text4.setText("loading…");
-                            text5.setText("loading…");
-                            text6.setText("loading…");
-                            text51.setText("");
-                            text61.setText("");
-                            dialog.dismiss();
-                        }
-                    });
-                    alertDialogSend.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            dialog.cancel();
-                        }
-                    });
-                    //alertDialog = alertDialogSend.create();
-                    alertDialogSend.show();
-                    runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            ClickMe();
-                        }
-                    });
-
-                }
-            });*/
 
         }else{
             title.setText("No internet connection");
@@ -436,9 +386,7 @@ public class MainActivity extends AppCompatActivity {
                         if(spCountry.getSelectedItemPosition() !=0){
                             docCountry = Jsoup.connect("https://www.worldometers.info/coronavirus/country/" + countryName + "/").get();
                             mastheadCountry = docCountry.select("div.maincounter-number");
-                            if(docCountry != null){
-                                subtitleCountry = mastheadCountry.text();
-                            }
+                            subtitleCountry = mastheadCountry.text(); ///!!!!!!!!!!!!!!!!!!!!!!!!!!!
                         }else {
                             //docCountry = null;
                             subtitleCountry = "Error";
@@ -486,15 +434,22 @@ public class MainActivity extends AppCompatActivity {
 
                 if(spCountry.getSelectedItemPosition() != 0){
                     String[] separatedCountry = subtitlePlus.substring(subtitlePlus.indexOf(spCountry.getSelectedItem().toString())).split(" ");
+                    String[] co = spCountry.getSelectedItem().toString().split(" ");
+                    int noData = 0;
                     Log.w("Check", spCountry.getSelectedItem().toString());
+                    Log.w("Check_length", String.valueOf(co.length));
                     Log.w("Check[]", Arrays.toString(separatedCountry));
-                    if (separatedCountry[2].substring(0, 1).equals("+")) {
-                        text51.setText(separatedCountry[2].replace(",", " "));
+                    Log.w("separatedCountry2", String.valueOf(separatedCountry[2 + co.length - 1]));
+
+                    if (separatedCountry[2 + co.length - 1].substring(0, 1).equals("+")) {
+                        text51.setText(separatedCountry[2 + co.length - 1].replace(",", " "));
                     } else {
                         text51.setText("");
+                        noData = 1;
                     }
-                    if (separatedCountry[4].substring(0, 1).equals("+")) {
-                        text61.setText(separatedCountry[4].replace(",", " "));
+                    Log.w("separatedCountry4", String.valueOf(separatedCountry[4 + co.length - 1 + noData]));
+                    if (separatedCountry[4 + co.length - 1 - noData].substring(0, 1).equals("+")) {
+                        text61.setText(separatedCountry[4 + co.length - 1 - noData].replace(",", " "));
                     } else {
                         text61.setText("");
                     }
@@ -524,7 +479,7 @@ public class MainActivity extends AppCompatActivity {
 
                 text1.setText("loading");
                 text2.setText("loading");
-                text1.setText("loading");
+                text3.setText("loading");
                 text21.setText("");
                 text31.setText("");
             }

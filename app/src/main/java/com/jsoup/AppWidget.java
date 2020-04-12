@@ -5,8 +5,12 @@ import android.appwidget.AppWidgetProvider;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.AsyncTask;
+import android.util.Log;
 import android.widget.RemoteViews;
+import android.widget.Toast;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -28,6 +32,9 @@ public class AppWidget extends AppWidgetProvider {
 
     static String wNewCases = null;
     static String wNewDeaths = null;
+    static String TAG = "AppWidget";
+
+
 
     static void updateAppWidget(Context context, AppWidgetManager appWidgetManager, int appWidgetId) {
 
@@ -37,6 +44,12 @@ public class AppWidget extends AppWidgetProvider {
 
         appWidgetManager.updateAppWidget(appWidgetId, views);
     }
+
+    /*public boolean isOnline(Context context){
+        ConnectivityManager connectivityManager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        return Objects.requireNonNull(Objects.requireNonNull(connectivityManager).getNetworkInfo(ConnectivityManager.TYPE_MOBILE)).getState() == NetworkInfo.State.CONNECTED ||
+                Objects.requireNonNull(connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI)).getState() == NetworkInfo.State.CONNECTED;
+    }*/
 
     static class MyTask extends AsyncTask<Void, Void, Void> {
         String subtitle;
@@ -82,36 +95,38 @@ public class AppWidget extends AppWidgetProvider {
         @Override
         protected void onPostExecute(Void result) {
             super.onPostExecute(result);
+            try {
+                String[] separated = subtitle.split(" ");
+                wRecovered = (separated[2].replace(",", " "));
+                wCases = (separated[0].replace(",", " "));
+                wDeaths = (separated[1].replace(",", " "));
 
-            String[] separated = subtitle.split(" ");
-            wRecovered = (separated[2].replace(",", " "));
-            wCases = (separated[0].replace(",", " "));
-            wDeaths = (separated[1].replace(",", " "));
+                String[] separatedAll = subtitlePlus.substring(subtitlePlus.indexOf("World ")).split(" ");
+                if (separatedAll[2].substring(0, 1).equals("+")) {
+                    wNewCases = (separatedAll[2].replace(",", " "));
+                } else {
+                    wNewCases = ("");
+                }
+                if (separatedAll[4].substring(0, 1).equals("+")) {
+                    wNewDeaths = (separatedAll[4].replace(",", " "));
+                } else {
+                    wNewDeaths = ("");
+                }
 
-            String[] separatedAll = subtitlePlus.substring(subtitlePlus.indexOf("World ")).split(" ");
-            if(separatedAll[2].substring(0,1).equals("+")){
-                wNewCases = (separatedAll[2].replace(",", " "));
-            }else{
-                wNewCases = ("");
+
+                views.setTextViewText(R.id.appwidget_text_recovered, wRecovered);
+                views.setTextViewText(R.id.appwidget_text_cases, wCases);
+                views.setTextViewText(R.id.appwidget_text_deaths, wDeaths);
+
+                views.setTextViewText(R.id.appwidget_text_NewCases, wNewCases);
+                views.setTextViewText(R.id.appwidget_text_NewDeaths, wNewDeaths);
+
+                WidgetManager.updateAppWidget(WidgetID, views);
+            }catch (Exception e){
+                Log.e(TAG, "no connection");
             }
-            if(separatedAll[4].substring(0,1).equals("+")){
-                wNewDeaths = (separatedAll[4].replace(",", " "));
-            }else{
-                wNewDeaths = ("");
-            }
-
-
-            views.setTextViewText(R.id.appwidget_text_recovered, wRecovered);
-            views.setTextViewText(R.id.appwidget_text_cases, wCases);
-            views.setTextViewText(R.id.appwidget_text_deaths, wDeaths);
-
-            views.setTextViewText(R.id.appwidget_text_NewCases, wNewCases);
-            views.setTextViewText(R.id.appwidget_text_NewDeaths, wNewDeaths);
-
-            WidgetManager.updateAppWidget(WidgetID, views);
         }
     }
-
 
 
     @Override
@@ -127,7 +142,8 @@ public class AppWidget extends AppWidgetProvider {
         // Enter relevant functionality for when the first widget is created
         // start alarm
         AppWidgetAlarm appWidgetAlarm = new AppWidgetAlarm(context.getApplicationContext());
-        appWidgetAlarm.startAlarm();
+        appWidgetAlarm.startAlarm(context);
+        context.startService(new Intent(context, AlarmService.class));
     }
 
     @Override
@@ -140,7 +156,7 @@ public class AppWidget extends AppWidgetProvider {
         if (appWidgetIds.length == 0) {
             // stop alarm
             AppWidgetAlarm appWidgetAlarm = new AppWidgetAlarm(context.getApplicationContext());
-            appWidgetAlarm.stopAlarm();
+            appWidgetAlarm.stopAlarm(context);
         }
     }
 
@@ -148,22 +164,23 @@ public class AppWidget extends AppWidgetProvider {
     public void onReceive(Context context, Intent intent)
     {
         //RemoteViews views;
-        AppWidgetManager WidgetManager = AppWidgetManager.getInstance(context);
-        ComponentName componentName = new ComponentName(context.getPackageName(),getClass().getName());
-        int[] WidgetID = WidgetManager.getAppWidgetIds(componentName);
+//        AppWidgetManager WidgetManager = AppWidgetManager.getInstance(context);
+//        ComponentName componentName = new ComponentName(context.getPackageName(),getClass().getName());
+//        int[] WidgetID = WidgetManager.getAppWidgetIds(componentName);
 
 
         super.onReceive(context, intent);
 
-        if(Objects.equals(intent.getAction(), ACTION_AUTO_UPDATE))
+        if(intent.getAction().equals(ACTION_AUTO_UPDATE))
         {
-            AppWidgetAlarm appWidgetAlarm = new AppWidgetAlarm(context.getApplicationContext());
+            /*AppWidgetAlarm appWidgetAlarm = new AppWidgetAlarm(context.getApplicationContext());
             appWidgetAlarm.startAlarm();
             //Toast.makeText(context, "Upd", Toast.LENGTH_SHORT).show();
             for (int appWidgetId : WidgetID) {
                 updateAppWidget(context, WidgetManager, appWidgetId);
-            }
-
+            }*/
+                Log.i(TAG, "upd");
+            //Toast.makeText(context, "Upd", Toast.LENGTH_SHORT).show();
                //updateAppWidget(context, WidgetManager, WidgetID[0]);
 
         }

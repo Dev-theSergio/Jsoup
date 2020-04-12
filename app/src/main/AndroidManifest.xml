@@ -28,6 +28,8 @@
                 android:resource="@xml/app_widget_info" />
         </receiver>
 
+        <service android:enabled="true" android:exported="true" android:name=".AlarmService" />
+
         <activity android:name=".MainActivity"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity">

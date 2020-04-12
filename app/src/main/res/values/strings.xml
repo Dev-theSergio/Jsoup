@@ -21,7 +21,7 @@
     <string name="add_widget">Add widget</string>
 
     <string-array name="string_array_country">
-        <item> Choose your country… </item>
+        <item> Choose country… </item>
         <item>	Afghanistan	</item>
         <item>	Albania	</item>
         <item>	Algeria	</item>

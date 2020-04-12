@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
     <!-- Base application theme. "Theme.AppCompat.Light.DarkActionBar" -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
@@ -10,13 +10,14 @@
 
     <style name="spinnerItemStyle" parent="android:Widget.TextView.SpinnerItem">
         <item name="android:textSize">20sp</item>
-        <item name="android:textColor">@android:color/secondary_text_light_nodisable</item>
+        <item name="android:textColor">@color/text_color</item>
+        <item name="android:gravity">center</item>
     </style>
 
-    <style name="spinnerDropDownItemStyle" parent="android:TextAppearance.Widget.TextView.SpinnerItem">
+    <style name="spinnerDropDownItemStyle" parent="android:TextAppearance.Widget.TextView.SpinnerItem"
+        tools:ignore="PrivateResource">
         <item name="android:textSize">20sp</item>
-        <item name="android:textColor">@android:color/secondary_text_light_nodisable</item>
-
+        <item name="android:textColor">@color/text_color</item>
     </style>
 
 </resources>
